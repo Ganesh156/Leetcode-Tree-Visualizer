@@ -95,7 +95,6 @@ export function treeConstructor(input) {
             idx++;
         }
     }
-
     return root;
 }
 

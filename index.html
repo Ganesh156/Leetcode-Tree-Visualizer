@@ -32,6 +32,20 @@
             gap: 1rem;
         }
 
+        .algo-btn{
+            width:100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .algo-area {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         button{
             width:5rem;
             height:2rem;
@@ -44,6 +58,21 @@
         <div class="action-btn">
             <button class="apply-btn">Apply</button>
             <button class="clear-btn">Clear</button>
+        </div>
+        <div class="algo-btn">
+            <div>Traverse Tree</div>
+            <div class="algo-area">
+                <button class="in-order-btn">In Order</button>
+                <div class="in-order-algo-result"></div>
+            </div>
+            <div class="algo-area">
+                <button class="pre-order-btn">Pre Order</button>
+                <div class="pre-order-algo-result"></div>
+            </div>
+            <div class="algo-area">
+                <button class="post-order-btn">Post Order</button>
+                <div class="post-order-algo-result"></div>
+            </div>
         </div>
     </div>
     <canvas></canvas>

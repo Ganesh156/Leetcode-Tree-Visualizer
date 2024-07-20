@@ -2,6 +2,8 @@ import {BinaryTreeNode} from './BinaryTreeNode.js';
 
 import { DEFAULT_CONFIG, getRequiredHeightAndWidth,drawNode,connectEdges,treeConstructor } from './treeUtils.js';
 
+import {inOrderTraversal, preOrderTraversal, postOrderTraversal} from './Algorithm.js';
+
 const canvas = document.querySelector('canvas');
 
 function drawBinaryTree(root, canvasElement){
@@ -74,7 +76,7 @@ function init(value){
 
     clearCanvas();
     const root = treeConstructor(value);
-
+    
     drawBinaryTree(root, canvas);
 }
 
@@ -87,6 +89,11 @@ const textArea = document.querySelector('textarea')
 const applyBtn = document.querySelector('.apply-btn');
 const clearBtn = document.querySelector('.clear-btn');
 
+const inOrderBtn = document.querySelector('.in-order-btn');
+const preOrderBtn = document.querySelector('.pre-order-btn');
+const postOrderBtn = document.querySelector('.post-order-btn');
+
+
 applyBtn.addEventListener('click', ()=>{
     if(textArea.value === '') return;
 
@@ -95,7 +102,52 @@ applyBtn.addEventListener('click', ()=>{
 
 clearBtn.addEventListener('click', () => {
     textArea.value = '';
+    document.querySelector('.in-order-algo-result').innerHTML = "";
+    document.querySelector('.pre-order-algo-result').innerHTML = "";
+    document.querySelector('.post-order-algo-result').innerHTML = "";
     clearCanvas()
 })
 
-window.addEventListener('resize', () => init(prevValue))
+
+inOrderBtn.addEventListener('click', ()=>{
+    if(textArea.value === '') return;
+
+    const inOrderTraversedArray = [];
+    const rootNode = treeConstructor(textArea.value);
+    const result = inOrderTraversal(rootNode,inOrderTraversedArray)
+
+    const inOrderDiv = document.querySelector('.in-order-algo-result')
+
+    inOrderDiv.innerHTML = result
+})
+
+preOrderBtn.addEventListener('click', ()=>{
+    if(textArea.value === '') return;
+
+    const preOrderTraversedArray = [];
+    const rootNode = treeConstructor(textArea.value);
+    const result = preOrderTraversal(rootNode, preOrderTraversedArray);
+
+    const preOrderDiv = document.querySelector('.pre-order-algo-result')
+
+    preOrderDiv.innerHTML = result
+})
+
+postOrderBtn.addEventListener('click', ()=>{
+    if(textArea.value === '') return;
+
+    const postOrderTraversedArray = [];
+    const rootNode = treeConstructor(textArea.value,postOrderTraversedArray);
+    const result = postOrderTraversal(rootNode)
+
+    const postOrderDiv = document.querySelector('.post-order-algo-result')
+
+    postOrderDiv.innerHTML = result
+})
+
+window.addEventListener('resize', () => {
+    init(prevValue)
+    if(textArea.value == ''){
+        clearCanvas()
+    }
+})
