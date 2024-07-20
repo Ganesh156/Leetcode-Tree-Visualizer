@@ -137,8 +137,8 @@ postOrderBtn.addEventListener('click', ()=>{
     if(textArea.value === '') return;
 
     const postOrderTraversedArray = [];
-    const rootNode = treeConstructor(textArea.value,postOrderTraversedArray);
-    const result = postOrderTraversal(rootNode)
+    const rootNode = treeConstructor(textArea.value);
+    const result = postOrderTraversal(rootNode,postOrderTraversedArray)
 
     const postOrderDiv = document.querySelector('.post-order-algo-result')
 
